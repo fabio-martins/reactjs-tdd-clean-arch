@@ -6,3 +6,4 @@ dist
 *.scss
 *.json
 public
+*.scss

@@ -10,10 +10,29 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve:{
-        extensions: ['.ts','.tsx','.js'],
+        extensions: ['.ts','.tsx','.js','scss'],
         alias: {
             '@': path.jois(__dirname,'src')
         }
+    },
+    module: {
+        rules:[{
+            test: /\.ts(x)$/,
+            loader: 'ts-loader',
+            exclude: /node_modules/
+        },{
+            test: /\.scss$/,
+            use:[{
+                loader: 'style-loader'
+            },{
+                loader: 'css-loader',
+                optios:{
+                    modules: true
+                }
+            },{
+                loader: 'sass-loader'
+            }]
+        }]
     },
     devServer: {
         contentBase: './public',
